@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: #cef2da;
+            font-family: Verdana, sans-serif;
+        }
+    </style>
+    <head>
+        <meta charset="utf-8">
+        <title>JSON Set List</title>
+    </head>
+    <body>
+        <h1>JSON Set List</h1>
+        <script language="javascript">
+        //     let setList = {
+        //       "setListHeader": "Wedding Set List",
+        //       "song1": {
+        //           "artist": "Ashe, FINNEAS",
+        //           "songTitle": "Till Forever Fall",
+        //           "musicGenre": "Pop",
+        //           "yearReleased": 2021
+        //       },
+        //       "song2": {
+        //           "artist": "Haley Reinhart",
+        //           "songTitle": "Can't Help Falling In Love",
+        //           "musicGenre": "Pop",
+        //           "yearReleased": 2016
+        //       },
+        //       "song3": {
+        //           "artist": "Lady A",
+        //           "songTitle": "Need You Now",
+        //           "musicGenre": "Country",
+        //           "yearReleased": 2009
+        //       },
+        //       "song4": {
+        //           "artist": "Lana Del Rey",
+        //           "songTitle": "Video Games",
+        //           "musicGenre": "Indie Rock",
+        //           "yearReleased": 2012
+        //       },
+        //       "song5": {
+        //           "artist": "Taylor Swift",
+        //           "songTitle": "Love Story",
+        //           "musicGenre": ["Pop", "Country"],
+        //           "yearReleased": 2008
+        //       },
+        //       "song6": {
+        //           "artist": "Kina Grannis",
+        //           "songTitle": "Dream a Little Dream of Me",
+        //           "musicGenre": "Pop",
+        //           "yearReleased": 2019
+        //       },
+        //       "song7": {
+        //           "artist": "The Features",
+        //           "songTitle": "From Now On",
+        //           "musicGenre": "Rock",
+        //           "yearReleased": 2013
+        //       },
+        //       "song8": {
+        //           "artist": "Of Monsters and Men",
+        //           "songTitle": "Little Talks",
+        //           "musicGenre": "Rock",
+        //           "yearReleased": 2011
+        //       },
+        //       "song9": {
+        //           "artist": "BANNERS",
+        //           "songTitle": "Someone to You",
+        //           "musicGenre": ["Alternative Rock", "Indie Rock"],
+        //           "yearReleased": 2019
+        //       },
+        //       "song10": {
+        //           "artist": "Lauv",
+        //           "songTitle": "Paris in the Rain",
+        //           "musicGenre": "Pop",
+        //           "yearReleased": 2018
+        //       }
+        //   } //json goes in brackets but spec says it should go in seperate file
+
+        //     strSetList = JSON.stringify(setList);
+        //     document.write(strSetList + "<br>");
+
+            res = 
+                fetch("./index.json")
+                .then(res => res.text())
+                .then(data => console.log(data))
+                .catch(error => console.log(error))
+
+            strSetListFetched = JSON.stringify(res);
+            document.write(strSetListFetched + "<br>");
+          </script>
+    </body>
+</html>
