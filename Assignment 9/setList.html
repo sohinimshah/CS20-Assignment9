@@ -12,82 +12,158 @@
     </head>
     <body>
         <h1>JSON Set List</h1>
+        <h3>Part 2</h3>
+        <div id="setListData"></div>
+        <h3>Part 3</h3>
+        <div id="userFriendlySetList"></div>
+        <h3>Part 4</h3>
+        <form>
+            <label for="genre">Choose a genre</label><br>
+            <select name="genre" id="genre">
+                <option value="Pop">Pop</option>
+                <option value="Country">Country</option>
+                <option value="Indie Rock">Indie Rock</option>
+                <option value="Rock">Rock</option>
+                <option value="Alternative Rock">Alternative Rock</option>
+            </select>
+            <button type="button" onclick="genreChosen()">Filter</button>
+        </form>
+        <br>
+        <div id="filteredSetList"></div>
         <script language="javascript">
-        //     let setList = {
-        //       "setListHeader": "Wedding Set List",
-        //       "song1": {
-        //           "artist": "Ashe, FINNEAS",
-        //           "songTitle": "Till Forever Fall",
-        //           "musicGenre": "Pop",
-        //           "yearReleased": 2021
-        //       },
-        //       "song2": {
-        //           "artist": "Haley Reinhart",
-        //           "songTitle": "Can't Help Falling In Love",
-        //           "musicGenre": "Pop",
-        //           "yearReleased": 2016
-        //       },
-        //       "song3": {
-        //           "artist": "Lady A",
-        //           "songTitle": "Need You Now",
-        //           "musicGenre": "Country",
-        //           "yearReleased": 2009
-        //       },
-        //       "song4": {
-        //           "artist": "Lana Del Rey",
-        //           "songTitle": "Video Games",
-        //           "musicGenre": "Indie Rock",
-        //           "yearReleased": 2012
-        //       },
-        //       "song5": {
-        //           "artist": "Taylor Swift",
-        //           "songTitle": "Love Story",
-        //           "musicGenre": ["Pop", "Country"],
-        //           "yearReleased": 2008
-        //       },
-        //       "song6": {
-        //           "artist": "Kina Grannis",
-        //           "songTitle": "Dream a Little Dream of Me",
-        //           "musicGenre": "Pop",
-        //           "yearReleased": 2019
-        //       },
-        //       "song7": {
-        //           "artist": "The Features",
-        //           "songTitle": "From Now On",
-        //           "musicGenre": "Rock",
-        //           "yearReleased": 2013
-        //       },
-        //       "song8": {
-        //           "artist": "Of Monsters and Men",
-        //           "songTitle": "Little Talks",
-        //           "musicGenre": "Rock",
-        //           "yearReleased": 2011
-        //       },
-        //       "song9": {
-        //           "artist": "BANNERS",
-        //           "songTitle": "Someone to You",
-        //           "musicGenre": ["Alternative Rock", "Indie Rock"],
-        //           "yearReleased": 2019
-        //       },
-        //       "song10": {
-        //           "artist": "Lauv",
-        //           "songTitle": "Paris in the Rain",
-        //           "musicGenre": "Pop",
-        //           "yearReleased": 2018
-        //       }
-        //   } //json goes in brackets but spec says it should go in seperate file
-
-        //     strSetList = JSON.stringify(setList);
-        //     document.write(strSetList + "<br>");
-
-            res = 
-                fetch("./index.json")
-                .then(res => res.text())
-                .then(data => console.log(data))
-                .catch(error => console.log(error))
-
-            strSetListFetched = JSON.stringify(res);
-            document.write(strSetListFetched + "<br>");
+            let setList = {
+              "setListHeader": "Wedding Set List",
+              "song1": {
+                  "artist": "Ashe, FINNEAS",
+                  "songTitle": "Till Forever Fall",
+                  "musicGenre": ["Pop"],
+                  "yearReleased": 2021
+              },
+              "song2": {
+                  "artist": "Haley Reinhart",
+                  "songTitle": "Can't Help Falling In Love",
+                  "musicGenre": ["Pop"],
+                  "yearReleased": 2016
+              },
+              "song3": {
+                  "artist": "Lady A",
+                  "songTitle": "Need You Now",
+                  "musicGenre": ["Country"],
+                  "yearReleased": 2009
+              },
+              "song4": {
+                  "artist": "Lana Del Rey",
+                  "songTitle": "Video Games",
+                  "musicGenre": ["Indie Rock"],
+                  "yearReleased": 2012
+              },
+              "song5": {
+                  "artist": "Taylor Swift",
+                  "songTitle": "Love Story",
+                  "musicGenre": ["Pop", "Country"],
+                  "yearReleased": 2008
+              },
+              "song6": {
+                  "artist": "Kina Grannis",
+                  "songTitle": "Dream a Little Dream of Me",
+                  "musicGenre": ["Pop"],
+                  "yearReleased": 2019
+              },
+              "song7": {
+                  "artist": "The Features",
+                  "songTitle": "From Now On",
+                  "musicGenre": ["Rock"],
+                  "yearReleased": 2013
+              },
+              "song8": {
+                  "artist": "Of Monsters and Men",
+                  "songTitle": "Little Talks",
+                  "musicGenre": ["Rock"],
+                  "yearReleased": 2011
+              },
+              "song9": {
+                  "artist": "BANNERS",
+                  "songTitle": "Someone to You",
+                  "musicGenre": ["Alternative Rock", "Indie Rock"],
+                  "yearReleased": 2019
+              },
+              "song10": {
+                  "artist": "Lauv",
+                  "songTitle": "Paris in the Rain",
+                  "musicGenre": ["Pop"],
+                  "yearReleased": 2018
+              }
+          }
+    
+            //Part 2
+            strSetList = JSON.stringify(setList);
+            document.getElementById("setListData").innerHTML = 
+                strSetList + "<br><br>";
+                        
+            //Part 3
+            song1 = displaySongInfo(setList.song1);
+            song2 = displaySongInfo(setList.song2);
+            song3 = displaySongInfo(setList.song3);
+            song4 = displaySongInfo(setList.song4);
+            song5 = displaySongInfo(setList.song5);
+            song6 = displaySongInfo(setList.song6);
+            song7 = displaySongInfo(setList.song7);
+            song8 = displaySongInfo(setList.song8);
+            song9 = displaySongInfo(setList.song9);
+            song10 = displaySongInfo(setList.song10);
+    
+            document.getElementById("userFriendlySetList").innerHTML = song1 + 
+                "<br><br>" + song2 + "<br><br>" + song3 + "<br><br>" + song4 + 
+                "<br><br>" + song5 + "<br><br>" + song6 + "<br><br>" + song7 + 
+                "<br><br>" + song8 + "<br><br>" + song9 + "<br><br>" + song10;
+    
+            function displaySongInfo(song) {
+                songInfo = song.songTitle + "<br>Artist: " + song.artist + 
+                    "<br>Genre: " + song.musicGenre + "<br>Released in " + 
+                    song.yearReleased;
+                return songInfo;
+            }
+    
+            //Part 4
+            function genreChosen() {
+                chosenGenre = document.getElementById("genre").value;
+    
+                var filteredList = "";
+                filteredList = displayIfGenreMatch(filteredList, setList.song1, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song2, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song3, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song4, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song5, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song6, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song7, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song8, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song9, 
+                    chosenGenre);
+                filteredList = displayIfGenreMatch(filteredList, setList.song10, 
+                    chosenGenre);
+                
+                document.getElementById("filteredSetList").innerHTML = 
+                    filteredList;
+            }
+    
+            function displayIfGenreMatch(filteredList, song, chosenGenre) {
+                songGenre = song.musicGenre;
+                for (let i = 0; i < songGenre.length; i++) {
+                    if (songGenre[i] === chosenGenre) {
+                        filteredList = filteredList + displaySongInfo(song) + 
+                            "<br><br>";
+                    }
+                }
+                return filteredList;
+            }
           </script>
     </body>
 </html>
